@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!--<script src="../bluebird.min.js"></script>-->
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+     var p1 = new Promise(function(f,r){
+            setTimeout(function(){
+                f(1)
+            },1000)
+     })
+
+     var p2 = new Promise(function(f,r){
+         setTimeout(function(){
+             r(2)
+         },2000)
+     })
+
+     Promise.all([p1,p2]).then(function(v){  console.log(v) })  //[1, 2]
+
+//     Promise.all([p1,p2]).then(null,function(v){  console.log(v) }) // 2
+</script>

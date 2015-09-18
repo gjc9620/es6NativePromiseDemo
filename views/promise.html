@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    new Promise(function(r,j){
+         setTimeout(function(){
+             r('{"name":"abc"}')
+         },300)
+    }).then(function(data){
+        return JSON.parse(data)
+    }).then(function(json){
+
+        var  p = new Promise(function(r,j){
+            setTimeout(function(){
+                r(['{"name":"edf"}',json])
+            },300);
+            setTimeout(function(){
+                j(new Error("time out"));
+            },300);
+
+        })
+        return p
+    }).then(function(arr){
+        return  [ JSON.parse(arr[0] ),arr[1] ]
+    },function(err){
+        throw  err
+    }).then(function(arr){
+        return arr[0].name + arr[1].name
+    }).then(function(str){
+        console.log(str);
+    })
+      .catch(function(e){
+         if(e.message  === "time out"){
+             console.log("time out")
+         }else{
+             console.log(e)
+         }
+
+      })
+</script>

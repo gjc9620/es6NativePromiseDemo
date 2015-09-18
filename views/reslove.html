@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    var  p1 = Promise.resolve(1);
+//    p1.then(alert)
+
+    var  p1 = Promise.resolve(function(f,r){
+         r("a")
+    } );
+    p1.then(function(){
+        alert(1)
+    }).then(function(){
+        alert(2)
+    })
+
+
+//var p1 = Promise.resolve({
+//    then: function(onFulfill, onReject) { onFulfill("dads!"); }
+//});
+//console.log(p1 instanceof Promise) // true, 这个对象是一个Promise对象
+//
+//p1.then(function(v) {
+//    console.log(v); // "fulfilled!"
+//}, function(e) {
+//    console.log(e); //  未被执行
+//});
+
+</script>

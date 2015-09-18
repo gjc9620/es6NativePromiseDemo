@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../bluebird.min.js"></script>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    P
+//            .resolve(1)
+//            .then(function(v){
+//                return v
+//            })
+//            .then(function(v){
+//                return new P(function(f,r){
+//                    setTimeout(function(){
+//                        f(v)
+//                    },500);
+//                })
+//            }).then(alert)
+
+
+P
+        .resolve(1)
+        .then(function(v){
+            return v
+        })
+        .spread(function(f,r){
+            setTimeout(function(){},500)
+        })
+        .then(alert)
+</script>
