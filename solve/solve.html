@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    Promise.resolve(1)
+//            .then(function(v){
+//                console.log("solve "+v)  //solve 1
+//            },function(v){
+//                console.log("reject "+v)
+//            })
+//            .catch(function(e){
+//                console.log(e)
+//            })
+/////////////////////////////////////解析thenable对象///////////////////////////////////////////////////
+        Promise.resolve({
+            then:function(f,r){
+                f(22);
+            }
+        })
+            .then(function(v){
+                console.log("solve "+v)  //solve 1
+            },function(v){
+                console.log("reject "+v)
+            })
+            .catch(function(e){
+                console.log(e)
+            })
+//---------------------------------------------------------------
+        Promise.resolve({
+            then:function(f,r){
+                r("ww");
+            }
+        })
+                .then(function(v){
+                    console.log("solve "+v)
+                },function(v){
+                    console.log("reject "+v)//reject ww
+                })
+                .catch(function(e){
+                    console.log(e)
+                })
+
+//---------------------------------------------------------------
+
+Promise.resolve({
+    then:function(f,r){
+        throw  new Error("abc")
+    }
+})
+        .then(function(v){
+            console.log("solve "+v)
+        })
+        .catch(function(e){
+            console.log(e)  // Error: abc(…)
+        })
+</script>
