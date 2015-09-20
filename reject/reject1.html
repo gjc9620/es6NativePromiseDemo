@@ -9,17 +9,22 @@
 </body>
 </html>
 <script>
-//     Promise.reject("reason")
-//             .then(function(v){
-//                  console.log(v)
-//             },function(v){
-//                  console.log("reject "+v) //reject reason
-//             })
-//             .catch(function(e){
-//                 console.log(e)
-//             })
+     Promise.reject("reason")
+             .then(function(v){
+                  console.log(v)
+             },function(v){
+                  console.log("reject "+v) //reject reason
+             })
+             .catch(function(e){
+                 console.log(e)
+             })
 
+///////////////////////////
 
-
+Promise.reject(new Error("fail"))
+        .then(alert) //未执行
+        .catch(function(e){
+            console.log(e)   //Error: fail(…)
+        })
 
 </script>
